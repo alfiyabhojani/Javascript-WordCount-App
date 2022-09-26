@@ -1,22 +1,17 @@
-let result = document.querySelector(".my-text");
-let word = document.querySelector("#text-area");
-let count = 0;
+let text = document.querySelector("#text-area");
+let button = document.querySelector(".btn");
+button.addEventListener("click", palindrome);
 
-word.addEventListener("keyup", (event) => {
-  const key = event.key;
-  console.log(count);
-  console.log(word.value);
-  if (key === "Backspace" && count === 0) {
-    result.textContent = "0";
-    return;
-  } else if (key == "Backspace" && count > 0) {
-    count = count - 1;
-    result.textContent = count;
-    console.log(count);
-  } else if (key == " ") {
-    result.textContent = count;
-  } else {
-    count = count + 1;
-    result.textContent = count;
+function palindrome() {
+  let string = text.value;
+  let len = string.length;
+  let msg = true;
+  for (let i = 0; i < len / 2; i++) {
+    if (string[i] != string[len - 1 - i]) msg = false;
   }
-});
+  if (msg) {
+    return alert("It is Palindrome.....");
+  } else {
+    return alert(`It is not a Palindrome.....`);
+  }
+}
